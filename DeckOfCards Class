@@ -1,0 +1,101 @@
+//***************************************************************************************
+// DeckOfCards.java            Author: Michelle Holmes   
+//
+// Represents a full deck of 52 playing cards.   
+//***************************************************************************************
+import java.util.Random;   // imports the Random class to create random number generators.
+public class DeckOfCards 
+{
+
+private Random generator = new Random();  // Instantiates a random number generator object.
+private Card [] cardDeck;  				  // Declares an array of Card objects. 
+private final int MAX = 52;				  // Declares a constant for the maximum number of cards.
+private String display, deltCard;		// Declares String objects to use in methods.
+private int index1, index2, index3;		// Declares integer variables for use in methods.
+private static int count = 52;		// Declares static integer variable for getDeckCount() method
+
+//---------------------------------------------------------------------------------------------
+// Constructor sets up a full deck of 52 cards using the Card class.
+//---------------------------------------------------------------------------------------------
+public DeckOfCards()
+{
+	cardDeck = new Card [MAX];  // Instantiates an array of Card objects to represent deck of cards.
+	
+	int index = 0;				// Instantiates each Card object that fills each array element.
+		for (int countSuit = 1; countSuit < 5; countSuit++)  
+			for (int countFace = 1; countFace < 14; countFace++) // Nested "for" loops that 
+				{													// assign a suite and face  
+				cardDeck [index] = new Card(countFace,countSuit);  // to each Card object.
+				index++;
+				}
+		
+}
+//--------------------------------------------------------------------------------------------
+// shuffle() method represents shuffling the deck of cards by switching pairs of Card objects.
+//--------------------------------------------------------------------------------------------
+public void shuffle()
+{
+	for (int i = 0; i < 4; i++) // for loop to shuffle the deck 3 times to ensure a full shuffle.
+		for (int j = 0; j < cardDeck.length; j++) // for loop to ensure all Card objects shuffled.
+			if (j % 2 == 0) // if statement to alternate which index is used for shuffle.
+			{
+				index1 = generator.nextInt(26); // Random number generator for index's 0-25. 
+				Card temp = cardDeck[j];  // Temporary Card object to hold current index Card object.
+				cardDeck[j] = cardDeck[index1]; // Replaces current index Card with random index Card.
+				cardDeck[index1] = temp; // Places current index Card in random index Card element.
+			}
+			else
+			{
+				index2 = generator.nextInt(26) + 26; // Random number generator for index's 26-51.
+				Card temp2 = cardDeck[j]; // Temporary Card object to hold current index Card.
+				cardDeck [j] = cardDeck[index2]; // Replaces current index Card with random index Card.
+				cardDeck[index2] = temp2; // Places current index Card into random index Card element.
+			}
+	
+	
+}
+//---------------------------------------------------------------------------------------------
+// Method to represent dealing a random card from the full deck of cards. 
+//---------------------------------------------------------------------------------------------
+public String deal()
+{
+	deltCard = ""; 					// String literal instantiates String reference variable.
+	index3 = generator.nextInt(52);	// Random number generator for index's 0-51.
+	deltCard = cardDeck[index3] + "";	// String concatenation with random index array element.
+	count--;					// Static "count" variable to keep track of how many times deal()
+								// method is called - keeps track of how many cards dealt.
+	return deltCard;
+}
+
+//---------------------------------------------------------------------------------------------
+// Method to get and return the number of cards left in the deck. 
+//---------------------------------------------------------------------------------------------
+public int getDeckCount()
+{	
+	return count;  // Returns the static variable "count".
+	
+}
+//---------------------------------------------------------------------------------------------
+// Method to get and return the number of cards that have been dealt.
+//---------------------------------------------------------------------------------------------
+public int getCardsDealt()
+{
+	int deltCards = MAX - count; // Calculates the number of cards dealt by subtracting 
+	return deltCards;			// the static variable "count" from constant MAX. 
+}								// Returns the difference - number of cards dealt.
+//---------------------------------------------------------------------------------------------
+// toString method that prints each Card object in the cardDeck array.
+//---------------------------------------------------------------------------------------------
+public String toString()
+{
+	display = "";  // Instantiates String literal object. 
+	for (int index = 0; index < cardDeck.length; index++) // for loop to evaluate each element
+		 display += cardDeck[index] + "\n"; 		// of cardDeck array and add it to the 
+												// String object through string concatenation.
+	return display; // Returns the String representation of the Card objects in cardDeck array.
+	
+}
+
+
+	
+}
