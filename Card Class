@@ -1,0 +1,124 @@
+//***************************************************************************************
+// Card.java            Author: Michelle Holmes   
+//
+// Represents a standard playing card.  
+//***************************************************************************************
+
+public class Card 
+
+{
+	private final int MAXFACE = 13; // Declares constant values for the maximum face
+	private final int MAXSUIT = 4;	// and suite values.
+	
+	private int faceValue, suitValue;		// Declares the private variables used in the 
+	private String face, suit, faceAndSuit;	// Card methods to ensure encapsulation.
+	
+//-------------------------------------------------------------------------------------
+// Initial constructor sets up the Card object and initial face and suite values. 
+//-------------------------------------------------------------------------------------
+public Card()
+{
+	faceValue = 1;
+	suitValue = 1;
+}
+//---------------------------------------------------------------------------------------
+// Second constructor to set up the Card object receiving the face and suite as parameters.
+//---------------------------------------------------------------------------------------
+public Card(int face1, int suit1) 
+{
+	faceValue = face1;
+	suitValue = suit1;
+}
+
+//-------------------------------------------------------------------------------------
+// Creates a random card face and suit using the random() method of the Math class and
+// the constants for the maximum suit and face values. 
+//-------------------------------------------------------------------------------------
+public void shuffle()
+{
+	faceValue = (int)(Math.random() * MAXFACE) + 1;
+	suitValue = (int)(Math.random() * MAXSUIT) + 1;
+	
+}
+
+//-------------------------------------------------------------------------------------
+// Method to set the face value of a Card object.
+//-------------------------------------------------------------------------------------
+public void setFaceValue(int num)
+{
+	if (num > 0 && num < 14)
+		faceValue = num;
+}
+
+//-------------------------------------------------------------------------------------
+// Method to get the current face value of a Card object. 
+//-------------------------------------------------------------------------------------
+public int getFaceValue()
+{
+	return faceValue;
+}
+
+//-------------------------------------------------------------------------------------
+// Method to set the suit value of a Card object. 
+//-------------------------------------------------------------------------------------
+public void setSuitValue(int num2)
+{
+	if (num2 > 0 && num2 < 5)
+		suitValue = num2;
+}
+
+//-------------------------------------------------------------------------------------
+// Method to get the suit value of a Card object. 
+//-------------------------------------------------------------------------------------
+public int getSuitValue()
+{
+	return suitValue;
+}
+
+//-------------------------------------------------------------------------------------
+// Method to get the face and suit textual String values. 
+//-------------------------------------------------------------------------------------
+public String getFaceAndSuit()
+{
+	return faceAndSuit;
+}
+
+
+//-------------------------------------------------------------------------------------
+// The toString method to display the face and suit of a Card object as a String. 
+//-------------------------------------------------------------------------------------
+public String toString()
+{
+	if (faceValue > 1 && faceValue < 11)
+	 	  face = Integer.toString(faceValue);
+	  else
+	  	{
+	 		if (faceValue == 1)
+	 			face = "Ace";
+	  		if (faceValue == 11)
+	  			face = "Jack";
+	  		if (faceValue == 12)
+	  			face = "Queen";
+	  		if (faceValue == 13)
+	  			face = "King";
+	  	}
+	  
+	  if (suitValue == 1)
+		  suit = "Spades ";
+	  else 
+	  	{
+	  		if (suitValue == 2)
+	  			suit = "Hearts ";
+	  		if (suitValue == 3)
+	  			suit = "Diamonds ";
+	  		if (suitValue == 4)
+	  			suit = "Clubs ";
+	  	}
+	  
+	  String faceAndSuit = face + " of " + suit;
+	 
+	
+	return faceAndSuit;
+}
+
+}
