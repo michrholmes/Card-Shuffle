@@ -1,0 +1,39 @@
+//***************************************************************************************
+// CardShuffle.java            Author: Michelle Holmes   
+//
+// A testing program to test the creation of a DeckOfCards array object and its methods.
+//***************************************************************************************
+public class CardShuffle 
+{
+	//---------------------------------------------------------------------------------------
+	// Creates a program that tests the creation of a full DeckOfCards array object. Tests
+	// it's toString(), shuffle(), deal(), getDeckCount() and getCardsDealt() methods. 
+	//---------------------------------------------------------------------------------------
+
+	public static void main(String[] args) 
+	{
+		
+		DeckOfCards deck = new DeckOfCards(); // Instantiates new DeckOfCards object.
+		
+		System.out.println("We have a brand new pack of cards below: ");
+		System.out.println (deck); // Tests toString() method of DeckOfCards object. 
+		deck.shuffle(); // Tests the shuffle() method of DeckOfCards object.
+		System.out.println("Lets shuffle the deck and deal each card:  \n" + deck);
+		// Represents and prints new shuffled deck of cards.
+		System.out.println("Lets re-shuffle the deck. \n");
+		deck.shuffle();
+		
+		System.out.println("Now lets deal a few cards: \n" + deck.deal()); 
+		System.out.println(deck.deal());   // Tests the deal() method of deckOfCards object.
+		System.out.println(deck.deal()); 	// Represents dealing 1 card out of the deck. 
+		System.out.println(deck.deal());
+		System.out.println(deck.deal());
+		System.out.println(deck.deal());
+		
+		System.out.println("The number of cards left in the deck are: " + deck.getDeckCount());
+				// Tests the getDeckCount() method and returns number of cards left in deck.
+		System.out.println("The number of cards delt are: " + deck.getCardsDealt());
+				// Tests the getCardsDealt() method and returns number of cards dealt so far.
+	}
+
+}
