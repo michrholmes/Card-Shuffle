@@ -16,10 +16,12 @@ public class CardShuffle
 		DeckOfCards deck = new DeckOfCards(); // Instantiates new DeckOfCards object.
 		
 		System.out.println("We have a brand new pack of cards below: ");
-		System.out.println (deck); // Tests toString() method of DeckOfCards object. 
+		
+		System.out.println (deck); // Tests toString() method of DeckOfCards object.
+		
 		deck.shuffle(); // Tests the shuffle() method of DeckOfCards object.
 		System.out.println("Lets shuffle the deck and deal each card:  \n" + deck);
-		// Represents and prints new shuffled deck of cards.
+		
 		System.out.println("Lets re-shuffle the deck. \n");
 		deck.shuffle();
 		
@@ -32,6 +34,7 @@ public class CardShuffle
 		
 		System.out.println("The number of cards left in the deck are: " + deck.getDeckCount());
 				// Tests the getDeckCount() method and returns number of cards left in deck.
+		
 		System.out.println("The number of cards delt are: " + deck.getCardsDealt());
 				// Tests the getCardsDealt() method and returns number of cards dealt so far.
 	}
